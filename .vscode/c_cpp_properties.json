@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "CUDA",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/local/cuda/include",
+                "/usr/local/cuda/targets/x86_64-linux/include",
+                "/usr/local/cuda/targets/x86_64-linux/include/cccl",
+                "/usr/local/cuda/targets/x86_64-linux/include/cccl/thrust",
+                "/usr/local/cuda/targets/x86_64-linux/include/cccl/cub",
+                "/usr/local/cuda/targets/x86_64-linux/include/cccl/libcudacxx/include"
+            ],
+            "defines": [
+                "__CUDACC__",
+                "__CUDA_ARCH__"
+            ],
+            "compilerPath": "/usr/local/cuda/bin/nvcc",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compileCommands": "${workspaceFolder}/compile_commands.json"
+        }
+    ],
+    "version": 4
+}

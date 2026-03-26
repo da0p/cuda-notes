@@ -9,3 +9,8 @@ CompileFlags:
     - "--options-file"
     - "-arch=*"
     - "-x"
+
+Diagnostics:
+  Suppress:
+    - template_arg_list_different_arity
+    - no_member_template_suggest

@@ -1,0 +1,11 @@
+CompileFlags:
+  Add:
+    - "-I/usr/local/cuda/targets/x86_64-linux/include/cccl"
+    - "--cuda-path=/usr/local/cuda"
+    - "-x"
+    - "cuda"
+  Remove:
+    - "-forward-unknown-to-host-compiler"
+    - "--options-file"
+    - "-arch=*"
+    - "-x"

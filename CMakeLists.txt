@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.18)
+project(cuda_exp CUDA CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CUDA_STANDARD 20)
+set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+
+find_package(CUDAToolkit REQUIRED)
+
+# Optional: set default arch, or use native to auto-detect
+set(CMAKE_CUDA_ARCHITECTURES native)
+
+add_executable(add_cuda add_cuda.cu)
+target_link_libraries(add_cuda CUDA::cudart)
+
+add_executable(basic_stream basic_stream.cu)
+target_link_libraries(basic_stream CUDA::cudart)

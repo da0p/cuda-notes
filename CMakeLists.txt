@@ -20,3 +20,7 @@ target_link_libraries(basic_stream CUDA::cudart)
 add_executable(advanced_stream advanced_stream.cu)
 target_link_libraries(advanced_stream CUDA::cudart)
 
+add_executable(libcudacxx_atomic cu_std_atomic.cu)
+target_link_libraries(cu_std_atomic CUDA::cudart)
+target_include_directories(cu_std_atomic PRIVATE ${CUDAToolkit_INCLUDE_DIRS}/../cccl)
+

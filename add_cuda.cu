@@ -3,7 +3,9 @@
 
 __global__
 void add(int n, float *x, float *y) {
-    for (int i = 0; i < n; i++) {
+    int index = blockIdx.x * blockDim.x + threadIdx.x;
+    int stride = blockDim.x * gridDim.x;
+    for (int i = index; i < n; i += stride) {
         y[i] = x[i] + y[i];
     }
 }
@@ -21,13 +23,15 @@ int main(void) {
         y[i] = 2.0f;
     }
 
+    int blockSize = 256;
+    int numBlocks = (N + blockSize - 1) / blockSize;
     // Run kernel on 1M elements on the GPU
-    add<<<1, 1>>>(N, x, y);
+    add<<<numBlocks, blockSize>>>(N, x, y);
 
     // Wait for GPU to finish before accessing on host
     cudaDeviceSynchronize();
 
-    // Check for errors (all values should be 3.0f)
+    // Check for errors (all values should be 3.0f)6
     float maxError = 0.0f;
     for (int i = 0; i < N; i++) {
         maxError = fmax(maxError, fabs(y[i] - 3.0f));

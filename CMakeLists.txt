@@ -68,3 +68,21 @@ target_compile_options(gpu_transform
     $<$<COMPILE_LANGUAGE:CUDA>:--extended-lambda>
 )
 
+add_executable(zip_iterator
+  zip_iterator.cu
+)
+
+target_link_libraries(zip_iterator
+  CUDA::cudart
+)
+
+target_include_directories(zip_iterator
+  PRIVATE
+    ${CUDAToolkit_INCLUDE_DIRS}/../cccl
+)
+
+target_compile_options(zip_iterator
+  PRIVATE
+    $<$<COMPILE_LANGUAGE:CUDA>:--extended-lambda>
+)
+

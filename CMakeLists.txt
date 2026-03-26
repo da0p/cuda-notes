@@ -16,3 +16,7 @@ target_link_libraries(add_cuda CUDA::cudart)
 
 add_executable(basic_stream basic_stream.cu)
 target_link_libraries(basic_stream CUDA::cudart)
+
+add_executable(advanced_stream advanced_stream.cu)
+target_link_libraries(advanced_stream CUDA::cudart)
+

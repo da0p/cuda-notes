@@ -122,3 +122,22 @@ target_compile_options(gpu_tabulate
     $<$<COMPILE_LANGUAGE:CUDA>:--extended-lambda>
     $<$<COMPILE_LANGUAGE:CUDA>:--expt-relaxed-constexpr>
 )
+
+add_executable(gpu_mdspan
+  gpu_mdspan.cu
+)
+
+target_link_libraries(gpu_mdspan
+  CUDA::cudart
+)
+
+target_include_directories(gpu_mdspan
+  PRIVATE
+    ${CUDAToolkit_INCLUDE_DIRS}/../cccl
+)
+
+target_compile_options(gpu_mdspan
+  PRIVATE
+    $<$<COMPILE_LANGUAGE:CUDA>:--extended-lambda>
+    $<$<COMPILE_LANGUAGE:CUDA>:--expt-relaxed-constexpr>
+)

@@ -103,3 +103,22 @@ target_compile_options(transform_iterator
   PRIVATE
     $<$<COMPILE_LANGUAGE:CUDA>:--extended-lambda>
 )
+
+add_executable(gpu_tabulate
+  gpu_tabulate.cu
+)
+
+target_link_libraries(gpu_tabulate
+  CUDA::cudart
+)
+
+target_include_directories(gpu_tabulate
+  PRIVATE
+    ${CUDAToolkit_INCLUDE_DIRS}/../cccl
+)
+
+target_compile_options(gpu_tabulate
+  PRIVATE
+    $<$<COMPILE_LANGUAGE:CUDA>:--extended-lambda>
+    $<$<COMPILE_LANGUAGE:CUDA>:--expt-relaxed-constexpr>
+)
